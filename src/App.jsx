@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
+import Certifications from './components/Certifications';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Education from './components/Education';
@@ -13,7 +14,6 @@ export default function App() {
   const [dark, setDark] = useState(true);
 
   useEffect(() => {
-    // Toggle 'light' class on body (dark is default in CSS)
     document.body.classList.toggle('light', !dark);
   }, [dark]);
 
@@ -23,6 +23,7 @@ export default function App() {
       <Hero />
       <About />
       <Skills dark={dark} />
+      <Certifications dark={dark} />
       <Projects dark={dark} />
       <Experience dark={dark} />
       <Education dark={dark} />

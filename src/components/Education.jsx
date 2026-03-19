@@ -21,7 +21,7 @@ export default function Education({ dark }) {
           className="text-center mb-16"
           style={{ color: 'var(--text-muted)' }}
         >
-          Where I've been learning
+          My academic journey and honors
         </motion.p>
 
         <motion.div
@@ -59,6 +59,48 @@ export default function Education({ dark }) {
             ))}
           </div>
         </motion.div>
+
+        {/* 12th & 10th */}
+        <div className="grid sm:grid-cols-2 gap-6 mb-16">
+          {[
+            {
+              school: 'National Institute of Open Education',
+              location: 'Patna, Bihar',
+              level: 'Intermediate (12th)',
+              period: 'Nov 2021 — Oct 2022',
+              score: '67.2%',
+            },
+            {
+              school: 'Kendriya Vidyalaya Guwahati',
+              location: 'Guwahati, Assam',
+              level: 'Matriculation (10th)',
+              period: 'Apr 2017 — Mar 2018',
+              score: '96.4%',
+            },
+          ].map((edu, i) => (
+            <motion.div
+              key={edu.level}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="p-6 rounded-xl"
+              style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
+            >
+              <h3 className="font-bold text-base mb-1">{edu.school}</h3>
+              <p className="text-xs mb-3" style={{ color: 'var(--text-muted)' }}>{edu.location}</p>
+              <div className="flex justify-between items-end">
+                <div>
+                  <p className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>{edu.level}</p>
+                  <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{edu.period}</p>
+                </div>
+                <div className="text-right">
+                  <div className="text-lg font-bold" style={{ color: 'var(--accent)' }}>{edu.score}</div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
         {/* Achievements */}
         <motion.h3
