@@ -28,20 +28,30 @@ const items = [
 
 export default function Experience({ dark }) {
   return (
-    <section id="experience" className={`py-24 px-6 ${dark ? 'bg-dark-card/30' : 'bg-gray-50/50'}`}>
+    <section id="experience" className="py-24 px-6" style={{ background: 'var(--bg-elevated)' }}>
       <div className="max-w-4xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl sm:text-4xl font-bold mb-16 text-center"
+          className="text-3xl sm:text-4xl font-bold mb-4 text-center"
         >
-          <span className="bg-gradient-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent">Experience</span>
+          Experience
         </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-center mb-16"
+          style={{ color: 'var(--text-muted)' }}
+        >
+          Where I've worked and contributed
+        </motion.p>
 
         <div className="relative">
           {/* Timeline line */}
-          <div className={`absolute left-4 md:left-6 top-0 bottom-0 w-px ${dark ? 'bg-dark-border' : 'bg-gray-200'}`} />
+          <div className="absolute left-4 md:left-6 top-0 bottom-0 w-px" style={{ background: 'var(--border)' }} />
 
           <div className="space-y-10">
             {items.map((item, i) => (
@@ -54,33 +64,34 @@ export default function Experience({ dark }) {
                 className="relative pl-12 md:pl-16"
               >
                 {/* Dot */}
-                <div className={`absolute left-2.5 md:left-4.5 top-1.5 w-3.5 h-3.5 rounded-full border-2 z-10
-                  ${item.current
-                    ? 'bg-accent-blue border-accent-blue shadow-lg shadow-blue-500/20'
-                    : dark ? 'bg-dark-card border-dark-border' : 'bg-white border-gray-300'
-                  }`}
+                <div className="absolute left-2.5 md:left-4.5 top-1.5 w-3.5 h-3.5 rounded-full border-2 z-10"
+                  style={item.current
+                    ? { background: 'var(--accent)', borderColor: 'var(--accent)', boxShadow: '0 0 8px var(--accent-glow)' }
+                    : { background: 'var(--bg-card)', borderColor: 'var(--border)' }
+                  }
                 />
 
-                <div className={`p-6 rounded-xl transition-all hover:-translate-y-1
-                  ${dark ? 'bg-dark-card border border-dark-border' : 'bg-white border border-gray-200 shadow-sm'}`}>
+                <div className="p-6 rounded-xl transition-all hover:-translate-y-1"
+                  style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}>
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
                     <h3 className="text-lg font-bold">{item.role}</h3>
                     {item.current && (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-accent-blue/10 text-accent-blue border border-accent-blue/20 w-fit">
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent-blue animate-pulse" />
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium w-fit"
+                        style={{ background: 'var(--accent-soft)', color: 'var(--accent)', border: '1px solid var(--accent-border)' }}>
+                        <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: 'var(--accent)' }} />
                         Current
                       </span>
                     )}
                   </div>
-                  <div className={`flex flex-wrap items-center gap-3 text-sm mb-4 ${dark ? 'text-gray-500' : 'text-gray-500'}`}>
+                  <div className="flex flex-wrap items-center gap-3 text-sm mb-4" style={{ color: 'var(--text-muted)' }}>
                     <span className="flex items-center gap-1"><Briefcase size={14} /> {item.company}</span>
                     <span className="flex items-center gap-1"><MapPin size={14} /> {item.location}</span>
                     <span className="flex items-center gap-1"><Calendar size={14} /> {item.period}</span>
                   </div>
                   <ul className="space-y-2">
                     {item.bullets.map(b => (
-                      <li key={b} className={`text-sm flex items-start gap-2 ${dark ? 'text-gray-400' : 'text-gray-600'}`}>
-                        <span className="text-accent-blue mt-0.5">▹</span>
+                      <li key={b} className="text-sm flex items-start gap-2" style={{ color: 'var(--text-secondary)' }}>
+                        <span style={{ color: 'var(--accent)' }} className="mt-0.5">▹</span>
                         {b}
                       </li>
                     ))}

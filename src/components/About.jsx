@@ -13,7 +13,7 @@ const fadeUp = {
   visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.5 } }),
 };
 
-export default function About({ dark }) {
+export default function About() {
   return (
     <section id="about" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
@@ -21,11 +21,20 @@ export default function About({ dark }) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl sm:text-4xl font-bold mb-16 text-center"
+          className="text-3xl sm:text-4xl font-bold mb-4 text-center"
         >
-          About{' '}
-          <span className="bg-gradient-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent">Me</span>
+          About Me
         </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-center mb-16"
+          style={{ color: 'var(--text-muted)' }}
+        >
+          A bit about my background and what drives me
+        </motion.p>
 
         <div className="grid md:grid-cols-5 gap-12 items-center">
           {/* Photo */}
@@ -36,11 +45,11 @@ export default function About({ dark }) {
             className="md:col-span-2 flex justify-center"
           >
             <div className="relative">
-              <div className="w-64 h-64 rounded-2xl overflow-hidden border-2 border-transparent bg-gradient-to-br from-accent-blue to-accent-purple p-[2px]">
+              <div className="w-64 h-64 rounded-2xl overflow-hidden p-[2px]"
+                style={{ border: '2px solid var(--border)' }}>
                 <img src="/assets/profile.jpeg" alt="Abhijit Kumar"
                   className="w-full h-full object-cover rounded-2xl" />
               </div>
-              <div className="absolute -inset-4 bg-gradient-to-br from-accent-blue/10 to-accent-purple/10 rounded-3xl -z-10 blur-xl" />
             </div>
           </motion.div>
 
@@ -51,7 +60,7 @@ export default function About({ dark }) {
             viewport={{ once: true }}
             className="md:col-span-3"
           >
-            <p className={`text-lg leading-relaxed mb-8 ${dark ? 'text-gray-400' : 'text-gray-600'}`}>
+            <p className="text-lg leading-relaxed mb-8" style={{ color: 'var(--text-secondary)' }}>
               Software engineering student at Lovely Professional University passionate about
               building scalable systems. I've built a GPU-accelerated cryptocurrency analysis
               platform processing 1B+ high-frequency records and engineered a crash-safe database
@@ -69,14 +78,14 @@ export default function About({ dark }) {
                   whileInView="visible"
                   viewport={{ once: true }}
                   variants={fadeUp}
-                  className={`p-4 rounded-xl text-center transition-all hover:-translate-y-1
-                    ${dark ? 'bg-dark-card border border-dark-border' : 'bg-gray-50 border border-gray-200'}`}
+                  className="p-4 rounded-xl text-center transition-all hover:-translate-y-1"
+                  style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
                 >
-                  <s.icon size={20} className="mx-auto mb-2 text-accent-blue" />
-                  <div className="text-2xl font-bold bg-gradient-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent">
+                  <s.icon size={20} className="mx-auto mb-2" style={{ color: 'var(--accent)' }} />
+                  <div className="text-2xl font-bold" style={{ color: 'var(--accent)' }}>
                     {s.value}
                   </div>
-                  <div className={`text-xs mt-1 ${dark ? 'text-gray-500' : 'text-gray-500'}`}>{s.label}</div>
+                  <div className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>{s.label}</div>
                 </motion.div>
               ))}
             </div>

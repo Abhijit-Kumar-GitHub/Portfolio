@@ -53,15 +53,15 @@ export default function Projects({ dark }) {
           viewport={{ once: true }}
           className="text-3xl sm:text-4xl font-bold mb-4 text-center"
         >
-          Featured{' '}
-          <span className="bg-gradient-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent">Projects</span>
+          Featured Projects
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className={`text-center mb-16 ${dark ? 'text-gray-500' : 'text-gray-500'}`}
+          className="text-center mb-16"
+          style={{ color: 'var(--text-muted)' }}
         >
           Things I've built that I'm proud of
         </motion.p>
@@ -74,33 +74,30 @@ export default function Projects({ dark }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className={`group rounded-xl overflow-hidden flex flex-col transition-all hover:-translate-y-2 hover:shadow-xl
-                ${dark
-                  ? 'bg-dark-card border border-dark-border hover:border-accent-blue/30 hover:shadow-blue-500/5'
-                  : 'bg-white border border-gray-200 hover:border-accent-blue/30 shadow-sm hover:shadow-blue-500/10'
-                }`}
+              className="group rounded-xl overflow-hidden flex flex-col transition-all hover:-translate-y-2"
+              style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
             >
-              {/* Preview header */}
-              <div className={`h-40 flex items-center justify-center text-5xl relative
-                ${dark ? 'bg-gradient-to-br from-dark-bg to-dark-card' : 'bg-gradient-to-br from-gray-50 to-gray-100'}`}>
+              {/* Preview */}
+              <div className="h-40 flex items-center justify-center text-5xl relative"
+                style={{ background: 'var(--bg-elevated)' }}>
                 <span className="opacity-60 group-hover:scale-110 transition-transform">{p.emoji}</span>
-                <div className="absolute inset-0 opacity-[0.04]"
+                <div className="absolute inset-0 opacity-[0.05]"
                   style={{
-                    backgroundImage: `radial-gradient(${dark ? '#3b82f6' : '#3b82f6'} 1px, transparent 1px)`,
+                    backgroundImage: `radial-gradient(var(--text-muted) 1px, transparent 1px)`,
                     backgroundSize: '20px 20px',
                   }}
                 />
               </div>
 
               <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-lg font-bold mb-3 group-hover:text-accent-blue transition-colors">{p.title}</h3>
-                <p className={`text-sm leading-relaxed mb-4 ${dark ? 'text-gray-400' : 'text-gray-600'}`}>{p.desc}</p>
+                <h3 className="text-lg font-bold mb-3">{p.title}</h3>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>{p.desc}</p>
 
                 {/* Highlights */}
                 <ul className="mb-4 space-y-1.5 flex-1">
                   {p.highlights.map(h => (
-                    <li key={h} className={`text-xs flex items-start gap-2 ${dark ? 'text-gray-500' : 'text-gray-500'}`}>
-                      <span className="text-accent-blue mt-0.5">▹</span>
+                    <li key={h} className="text-xs flex items-start gap-2" style={{ color: 'var(--text-muted)' }}>
+                      <span style={{ color: 'var(--accent)' }} className="mt-0.5">▹</span>
                       {h}
                     </li>
                   ))}
@@ -109,17 +106,17 @@ export default function Projects({ dark }) {
                 {/* Tech */}
                 <div className="flex flex-wrap gap-1.5 mb-5">
                   {p.tech.map(t => (
-                    <span key={t} className={`px-2 py-1 rounded text-xs font-mono
-                      ${dark ? 'bg-dark-bg/50 text-accent-blue border border-dark-border' : 'bg-blue-50 text-accent-blue border border-blue-100'}`}>
+                    <span key={t} className="px-2 py-1 rounded text-xs font-mono"
+                      style={{ background: 'var(--accent-soft)', color: 'var(--accent)', border: '1px solid var(--accent-border)' }}>
                       {t}
                     </span>
                   ))}
                 </div>
 
-                {/* Links */}
+                {/* Link */}
                 <a href={p.github} target="_blank" rel="noopener noreferrer"
-                  className={`inline-flex items-center gap-2 text-sm font-medium transition-colors hover:text-accent-blue
-                    ${dark ? 'text-gray-400' : 'text-gray-600'}`}>
+                  className="inline-flex items-center gap-2 text-sm font-medium transition-colors"
+                  style={{ color: 'var(--text-secondary)' }}>
                   <Github size={16} /> View Code <ExternalLink size={14} />
                 </a>
               </div>

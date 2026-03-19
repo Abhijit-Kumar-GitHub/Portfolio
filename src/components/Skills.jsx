@@ -1,17 +1,18 @@
 import { motion } from 'framer-motion';
+import { Code, Globe, BrainCircuit, Database, Terminal, Cpu } from 'lucide-react';
 
 const categories = [
-  { title: 'Languages', items: ['C++', 'Python', 'Java'] },
-  { title: 'Web Development', items: ['React.js', 'Node.js', 'Express.js', 'JavaScript', 'Flask', 'HTML/CSS'] },
-  { title: 'Data Science & ML', items: ['XGBoost', 'LightGBM', 'TensorFlow', 'Pandas', 'NumPy', 'cuDF/RAPIDS', 'SHAP'] },
-  { title: 'Databases', items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis'] },
-  { title: 'DevOps & Tools', items: ['Git', 'Docker', 'Linux', 'Postman', 'CMake'] },
-  { title: 'Core Concepts', items: ['DSA', 'System Design', 'Distributed Systems', 'OOP', 'REST APIs', 'Perf. Optimization'] },
+  { title: 'Languages', icon: Code, items: ['C++', 'Python', 'Java'] },
+  { title: 'Web Development', icon: Globe, items: ['React.js', 'Node.js', 'Express.js', 'JavaScript', 'Flask', 'HTML/CSS'] },
+  { title: 'Data Science & ML', icon: BrainCircuit, items: ['XGBoost', 'LightGBM', 'TensorFlow', 'Pandas', 'NumPy', 'cuDF/RAPIDS', 'SHAP'] },
+  { title: 'Databases', icon: Database, items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis'] },
+  { title: 'DevOps & Tools', icon: Terminal, items: ['Git', 'Docker', 'Linux', 'Postman', 'CMake'] },
+  { title: 'Core Concepts', icon: Cpu, items: ['DSA', 'System Design', 'Distributed Systems', 'OOP', 'REST APIs', 'Perf. Optimization'] },
 ];
 
 export default function Skills({ dark }) {
   return (
-    <section id="skills" className={`py-24 px-6 ${dark ? 'bg-dark-card/30' : 'bg-gray-50/50'}`}>
+    <section id="skills" className="py-24 px-6" style={{ background: 'var(--bg-elevated)' }}>
       <div className="max-w-6xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -19,15 +20,15 @@ export default function Skills({ dark }) {
           viewport={{ once: true }}
           className="text-3xl sm:text-4xl font-bold mb-4 text-center"
         >
-          Skills &{' '}
-          <span className="bg-gradient-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent">Technologies</span>
+          Skills & Technologies
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className={`text-center mb-16 ${dark ? 'text-gray-500' : 'text-gray-500'}`}
+          className="text-center mb-16"
+          style={{ color: 'var(--text-muted)' }}
         >
           What I work with day-to-day
         </motion.p>
@@ -40,19 +41,24 @@ export default function Skills({ dark }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className={`p-6 rounded-xl transition-all hover:-translate-y-1 group
-                ${dark ? 'bg-dark-card border border-dark-border hover:border-accent-blue/30' : 'bg-white border border-gray-200 hover:border-accent-blue/30 shadow-sm'}`}
+              className="p-6 rounded-xl transition-all hover:-translate-y-1 group"
+              style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
             >
-              <h3 className="text-lg font-semibold mb-4 group-hover:text-accent-blue transition-colors">
-                {cat.title}
-              </h3>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg" style={{ background: 'var(--accent-soft)' }}>
+                  <cat.icon size={20} style={{ color: 'var(--accent)' }} />
+                </div>
+                <h3 className="text-lg font-semibold">{cat.title}</h3>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {cat.items.map(item => (
-                  <span key={item} className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors
-                    ${dark
-                      ? 'bg-dark-bg/50 text-gray-400 border border-dark-border hover:text-accent-blue hover:border-accent-blue/30'
-                      : 'bg-gray-50 text-gray-600 border border-gray-200 hover:text-accent-blue hover:border-accent-blue/30'
-                    }`}>
+                  <span key={item}
+                    className="px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
+                    style={{
+                      background: 'var(--bg-elevated)',
+                      color: 'var(--text-secondary)',
+                      border: '1px solid var(--border)',
+                    }}>
                     {item}
                   </span>
                 ))}

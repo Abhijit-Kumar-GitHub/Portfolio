@@ -27,38 +27,40 @@ export default function Navbar({ dark, setDark }) {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
-      ${scrolled
-        ? dark
-          ? 'bg-dark-bg/90 backdrop-blur-xl border-b border-dark-border shadow-lg'
-          : 'bg-white/90 backdrop-blur-xl border-b border-gray-200 shadow-sm'
-        : 'bg-transparent'
-      }`}
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      style={{
+        backgroundColor: scrolled ? 'var(--bg-card)' : 'transparent',
+        borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
+        backdropFilter: scrolled ? 'blur(16px)' : 'none',
+      }}
     >
       {/* Scroll progress */}
-      <div className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-accent-blue to-accent-purple transition-all duration-150"
-        style={{ width: `${progress}%` }}
+      <div
+        className="absolute bottom-0 left-0 h-[2px] transition-all duration-150"
+        style={{ width: `${progress}%`, background: 'var(--accent)' }}
       />
 
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="text-xl font-bold tracking-tight">
-          <span className="bg-gradient-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent">
-            AK
-          </span>
+        <a href="#" className="text-xl font-bold tracking-tight" style={{ color: 'var(--accent)' }}>
+          AK<span style={{ color: 'var(--text-muted)' }}>.</span>
         </a>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
           {links.map(l => (
             <a key={l.href} href={l.href}
-              className={`text-sm font-medium transition-colors hover:text-accent-blue
-                ${dark ? 'text-gray-400 hover:text-accent-blue' : 'text-gray-600 hover:text-accent-blue'}`}
+              className="text-sm font-medium transition-colors"
+              style={{ color: 'var(--text-secondary)' }}
+              onMouseEnter={e => e.target.style.color = 'var(--accent)'}
+              onMouseLeave={e => e.target.style.color = 'var(--text-secondary)'}
             >
               {l.label}
             </a>
           ))}
           <button onClick={() => setDark(!dark)}
-            className={`p-2 rounded-lg transition-colors ${dark ? 'hover:bg-dark-card text-gray-400' : 'hover:bg-gray-100 text-gray-600'}`}
+            className="p-2 rounded-lg transition-colors cursor-pointer"
+            style={{ color: 'var(--text-muted)' }}
             aria-label="Toggle theme"
           >
             {dark ? <Sun size={18} /> : <Moon size={18} />}
@@ -68,12 +70,14 @@ export default function Navbar({ dark, setDark }) {
         {/* Mobile */}
         <div className="flex md:hidden items-center gap-2">
           <button onClick={() => setDark(!dark)}
-            className={`p-2 rounded-lg ${dark ? 'text-gray-400' : 'text-gray-600'}`}
+            className="p-2 rounded-lg cursor-pointer"
+            style={{ color: 'var(--text-muted)' }}
           >
             {dark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           <button onClick={() => setOpen(!open)}
-            className={`p-2 rounded-lg ${dark ? 'text-gray-400' : 'text-gray-600'}`}
+            className="p-2 rounded-lg cursor-pointer"
+            style={{ color: 'var(--text-secondary)' }}
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -85,13 +89,17 @@ export default function Navbar({ dark, setDark }) {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          className={`md:hidden border-t px-6 py-4 flex flex-col gap-3
-            ${dark ? 'bg-dark-bg/95 backdrop-blur-xl border-dark-border' : 'bg-white/95 backdrop-blur-xl border-gray-200'}`}
+          className="md:hidden px-6 py-4 flex flex-col gap-3"
+          style={{
+            backgroundColor: 'var(--bg-card)',
+            borderTop: '1px solid var(--border)',
+            backdropFilter: 'blur(16px)',
+          }}
         >
           {links.map(l => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)}
-              className={`text-sm font-medium py-2 ${dark ? 'text-gray-300' : 'text-gray-700'}`}
+              className="text-sm font-medium py-2"
+              style={{ color: 'var(--text-secondary)' }}
             >
               {l.label}
             </a>

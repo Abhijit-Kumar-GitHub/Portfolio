@@ -1,0 +1,63 @@
+/*
+ * ══════════════════════════════════════════════
+ *  THEME — Central color configuration
+ *  Edit these CSS variables to restyle the
+ *  entire portfolio in one place.
+ * ══════════════════════════════════════════════
+ */
+
+/* ── Dark Mode (default) ── */
+:root {
+  /* Backgrounds */
+  --bg-primary: #0f1117;
+  --bg-card: #181b24;
+  --bg-elevated: #1e222d;
+
+  /* Borders */
+  --border: #2a2e3a;
+  --border-hover: #3d4250;
+
+  /* Text */
+  --text-primary: #e2e4e9;
+  --text-secondary: #9ca0ab;
+  --text-muted: #5c6170;
+
+  /* Accent — emerald/teal, warm and developer-friendly */
+  --accent: #10b981;
+  --accent-soft: rgba(16, 185, 129, 0.12);
+  --accent-border: rgba(16, 185, 129, 0.25);
+  --accent-glow: rgba(16, 185, 129, 0.15);
+
+  /* Secondary accent — warm amber */
+  --accent-2: #f59e0b;
+  --accent-2-soft: rgba(245, 158, 11, 0.12);
+
+  /* Gradient — subtle, warm tones */
+  --gradient-accent: linear-gradient(135deg, #10b981, #059669);
+  --gradient-text: linear-gradient(135deg, #e2e4e9, #9ca0ab);
+}
+
+/* ── Light Mode ── */
+.light {
+  --bg-primary: #fafafa;
+  --bg-card: #ffffff;
+  --bg-elevated: #f4f4f5;
+
+  --border: #e4e4e7;
+  --border-hover: #d1d5db;
+
+  --text-primary: #18181b;
+  --text-secondary: #52525b;
+  --text-muted: #a1a1aa;
+
+  --accent: #059669;
+  --accent-soft: rgba(5, 150, 105, 0.08);
+  --accent-border: rgba(5, 150, 105, 0.2);
+  --accent-glow: rgba(5, 150, 105, 0.1);
+
+  --accent-2: #d97706;
+  --accent-2-soft: rgba(217, 119, 6, 0.08);
+
+  --gradient-accent: linear-gradient(135deg, #059669, #047857);
+  --gradient-text: linear-gradient(135deg, #18181b, #3f3f46);
+}

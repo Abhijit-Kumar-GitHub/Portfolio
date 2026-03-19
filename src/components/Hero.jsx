@@ -4,7 +4,7 @@ import { Github, Linkedin, Mail, ArrowDown, FileText } from 'lucide-react';
 
 const roles = ['Systems Engineer', 'ML Developer', 'Problem Solver'];
 
-export default function Hero({ dark }) {
+export default function Hero() {
   const [roleIdx, setRoleIdx] = useState(0);
   const [text, setText] = useState('');
   const [deleting, setDeleting] = useState(false);
@@ -31,20 +31,13 @@ export default function Hero({ dark }) {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-      {/* Background pattern */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className={`absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full blur-[120px] opacity-20
-          ${dark ? 'bg-accent-blue' : 'bg-blue-200'}`} />
-        <div className={`absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full blur-[120px] opacity-15
-          ${dark ? 'bg-accent-purple' : 'bg-purple-200'}`} />
-        {/* Grid pattern */}
-        <div className={`absolute inset-0 opacity-[0.03]`}
-          style={{
-            backgroundImage: `radial-gradient(${dark ? '#fff' : '#000'} 1px, transparent 1px)`,
-            backgroundSize: '40px 40px',
-          }}
-        />
-      </div>
+      {/* Subtle dot grid */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
+        style={{
+          backgroundImage: `radial-gradient(var(--text-muted) 1px, transparent 1px)`,
+          backgroundSize: '32px 32px',
+        }}
+      />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <motion.div
@@ -53,41 +46,41 @@ export default function Hero({ dark }) {
           transition={{ duration: 0.7 }}
         >
           {/* Badge */}
-          <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-8
-            ${dark ? 'bg-dark-card border border-dark-border text-accent-blue' : 'bg-blue-50 border border-blue-100 text-accent-blue'}`}>
-            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium mb-8"
+            style={{ background: 'var(--accent-soft)', border: '1px solid var(--accent-border)', color: 'var(--accent)' }}>
+            <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: 'var(--accent)' }} />
             Incoming SDE Intern @ Microsoft
           </div>
 
           {/* Name */}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-            <span className="bg-gradient-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent">
-              Abhijit Kumar
-            </span>
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6"
+            style={{ color: 'var(--text-primary)' }}>
+            Abhijit Kumar
           </h1>
 
           {/* Typing */}
-          <p className={`text-xl sm:text-2xl mb-4 ${dark ? 'text-gray-400' : 'text-gray-600'}`}>
+          <p className="text-xl sm:text-2xl mb-4" style={{ color: 'var(--text-secondary)' }}>
             I'm a{' '}
-            <span className="text-accent-blue font-semibold">{text}</span>
-            <span className="inline-block w-0.5 h-6 bg-accent-blue ml-0.5 align-text-bottom animate-pulse" />
+            <span className="font-semibold" style={{ color: 'var(--accent)' }}>{text}</span>
+            <span className="inline-block w-0.5 h-6 ml-0.5 align-text-bottom animate-pulse"
+              style={{ background: 'var(--accent)' }} />
           </p>
 
           {/* Tagline */}
-          <p className={`text-lg max-w-xl mx-auto mb-10 leading-relaxed
-            ${dark ? 'text-gray-500' : 'text-gray-500'}`}>
+          <p className="text-lg max-w-xl mx-auto mb-10 leading-relaxed" style={{ color: 'var(--text-muted)' }}>
             Building scalable systems and ML pipelines
           </p>
 
           {/* CTA */}
           <div className="flex items-center justify-center gap-4 flex-wrap mb-12">
             <a href="#projects"
-              className="px-6 py-3 rounded-lg bg-gradient-to-r from-accent-blue to-accent-purple text-white font-semibold text-sm shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all">
+              className="px-6 py-3 rounded-lg text-white font-semibold text-sm hover:-translate-y-0.5 transition-all"
+              style={{ background: 'var(--accent)' }}>
               View Projects
             </a>
             <a href="/assets/certificates/CV_Abhijit_ML.pdf" target="_blank"
-              className={`px-6 py-3 rounded-lg font-semibold text-sm flex items-center gap-2 transition-all hover:-translate-y-0.5
-                ${dark ? 'border border-dark-border text-gray-300 hover:border-accent-blue' : 'border border-gray-300 text-gray-700 hover:border-accent-blue'}`}>
+              className="px-6 py-3 rounded-lg font-semibold text-sm flex items-center gap-2 transition-all hover:-translate-y-0.5"
+              style={{ border: '1px solid var(--border)', color: 'var(--text-secondary)' }}>
               <FileText size={16} /> Resume
             </a>
           </div>
@@ -100,8 +93,8 @@ export default function Hero({ dark }) {
               { icon: Mail, href: 'mailto:abhijitabhi127@gmail.com', label: 'Email' },
             ].map(s => (
               <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
-                className={`p-3 rounded-xl transition-all hover:-translate-y-1
-                  ${dark ? 'bg-dark-card border border-dark-border text-gray-400 hover:text-accent-blue hover:border-accent-blue/50' : 'bg-gray-50 border border-gray-200 text-gray-500 hover:text-accent-blue hover:border-accent-blue/50'}`}>
+                className="p-3 rounded-xl transition-all hover:-translate-y-1"
+                style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', color: 'var(--text-muted)' }}>
                 <s.icon size={20} />
               </a>
             ))}
@@ -110,7 +103,8 @@ export default function Hero({ dark }) {
 
         {/* Scroll indicator */}
         <motion.div
-          className={`absolute bottom-8 left-1/2 -translate-x-1/2 ${dark ? 'text-gray-600' : 'text-gray-400'}`}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          style={{ color: 'var(--text-muted)' }}
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
