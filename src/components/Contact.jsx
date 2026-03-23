@@ -28,7 +28,7 @@ export default function Contact({ dark }) {
   };
 
   return (
-    <section id="contact" className="py-24 px-6" style={{ background: 'var(--bg-elevated)' }}>
+    <section id="contact" className="py-24 px-6" style={{ background: 'var(--bg-primary)' }}>
       <div className="max-w-4xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Award, ExternalLink } from 'lucide-react';
+import GlassCard from './GlassCard';
 
 const certifications = [
   {
@@ -61,19 +62,18 @@ export default function Certifications({ dark }) {
           Courses and credentials I've earned along the way
         </motion.p>
 
+
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {certifications.map((cert, i) => (
-            <motion.a
+            <GlassCard
               key={cert.title}
+              as={motion.a}
               href={cert.link}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="p-5 rounded-xl flex flex-col gap-3 transition-all hover:-translate-y-1 group cursor-pointer"
-              style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
+              delay={i * 0.08}
+              className="p-5 flex flex-col gap-3 group cursor-pointer"
             >
               <div className="flex items-center justify-between">
                 <div className="p-2 rounded-lg" style={{ background: 'var(--accent-soft)' }}>
@@ -87,7 +87,7 @@ export default function Certifications({ dark }) {
                 <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{cert.issuer}</p>
                 <p className="text-xs font-mono mt-0.5" style={{ color: 'var(--accent)' }}>{cert.date}</p>
               </div>
-            </motion.a>
+            </GlassCard>
           ))}
         </div>
 
@@ -112,17 +112,14 @@ export default function Certifications({ dark }) {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {trainings.map((t, i) => (
-            <motion.a
+            <GlassCard
               key={t.title}
+              as={motion.a}
               href={t.file}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="p-5 rounded-xl flex flex-col gap-3 transition-all hover:-translate-y-1 group cursor-pointer"
-              style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
+              delay={i * 0.08}
+              className="p-5 flex flex-col gap-3 group cursor-pointer"
             >
               <div className="p-2 rounded-lg w-fit" style={{ background: 'var(--accent-2-soft)' }}>
                 <Award size={20} style={{ color: 'var(--accent-2)' }} />
@@ -131,7 +128,7 @@ export default function Certifications({ dark }) {
               <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{t.issuer}</p>
               <p className="text-xs mt-1" style={{ color: 'var(--accent)' }}>{t.date}</p>
               {t.detail && <p className="text-[10px] uppercase font-bold mt-1 opacity-60">{t.detail}</p>}
-            </motion.a>
+            </GlassCard>
           ))}
         </div>
       </div>

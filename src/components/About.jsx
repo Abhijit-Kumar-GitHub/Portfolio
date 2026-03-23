@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
 import { Database, Zap, Trophy, GraduationCap } from 'lucide-react';
+import GlassCard from './GlassCard';
 
 const stats = [
   { icon: Database, value: '1B+', label: 'Records Processed' },
   { icon: Zap, value: '20x', label: 'Performance Gain' },
   { icon: Trophy, value: 'Top 1.3%', label: 'LeetCode' },
-  { icon: GraduationCap, value: '9.43', label: 'CGPA' },
+  { icon: GraduationCap, value: '9.28', label: 'CGPA' },
 ];
 
 const fadeUp = {
@@ -15,7 +16,7 @@ const fadeUp = {
 
 export default function About() {
   return (
-    <section id="about" className="py-24 px-6">
+    <section id="about" className="py-24 px-6" style={{ backgroundColor: 'var(--bg-elevated)' }}>
       <div className="max-w-6xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -45,7 +46,7 @@ export default function About() {
             className="md:col-span-2 flex justify-center"
           >
             <div className="relative">
-              <div className="w-64 h-64 rounded-2xl overflow-hidden p-[2px]"
+              <div className="w-80 h-80 rounded-2xl overflow-hidden p-[2px]"
                 style={{ border: '2px solid var(--border)' }}>
                 <img src="/assets/profile.jpeg" alt="Abhijit Kumar"
                   className="w-full h-full object-cover rounded-2xl" />
@@ -69,24 +70,21 @@ export default function About() {
             </p>
 
             {/* Stats */}
+
+
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {stats.map((s, i) => (
-                <motion.div
+                <GlassCard
                   key={s.label}
-                  custom={i}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={fadeUp}
-                  className="p-4 rounded-xl text-center transition-all hover:-translate-y-1"
-                  style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
+                  delay={0.3 + i * 0.1}
+                  className="p-4 text-center"
                 >
                   <s.icon size={20} className="mx-auto mb-2" style={{ color: 'var(--accent)' }} />
                   <div className="text-2xl font-bold" style={{ color: 'var(--accent)' }}>
                     {s.value}
                   </div>
                   <div className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>{s.label}</div>
-                </motion.div>
+                </GlassCard>
               ))}
             </div>
           </motion.div>

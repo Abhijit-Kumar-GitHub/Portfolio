@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Code, Globe, BrainCircuit, Database, Terminal, Cpu } from 'lucide-react';
+import GlassCard from './GlassCard';
 
 const categories = [
   { title: 'Languages', icon: Code, items: ['C++', 'Python', 'Java'] },
@@ -12,7 +13,7 @@ const categories = [
 
 export default function Skills({ dark }) {
   return (
-    <section id="skills" className="py-24 px-6" style={{ background: 'var(--bg-elevated)' }}>
+    <section id="skills" className="py-24 px-6" style={{ background: 'var(--bg-primary)' }}>
       <div className="max-w-6xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -33,17 +34,11 @@ export default function Skills({ dark }) {
           What I work with day-to-day
         </motion.p>
 
+
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((cat, i) => (
-            <motion.div
-              key={cat.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="p-6 rounded-xl transition-all hover:-translate-y-1 group"
-              style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
-            >
+            <GlassCard key={cat.title} delay={i * 0.08} className="p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 rounded-lg" style={{ background: 'var(--accent-soft)' }}>
                   <cat.icon size={20} style={{ color: 'var(--accent)' }} />
@@ -63,7 +58,7 @@ export default function Skills({ dark }) {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </GlassCard>
           ))}
         </div>
       </div>

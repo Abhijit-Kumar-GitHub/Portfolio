@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Github, ExternalLink } from 'lucide-react';
+import GlassCard from './GlassCard';
 
 const projects = [
   {
@@ -66,17 +67,11 @@ export default function Projects({ dark }) {
           Things I've built that I'm proud of
         </motion.p>
 
+
+
         <div className="grid lg:grid-cols-3 gap-6">
           {projects.map((p, i) => (
-            <motion.div
-              key={p.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="group rounded-xl overflow-hidden flex flex-col transition-all hover:-translate-y-2"
-              style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
-            >
+            <GlassCard key={p.title} delay={i * 0.08} className="flex flex-col h-full">
               {/* Preview */}
               <div className="h-40 flex items-center justify-center text-5xl relative"
                 style={{ background: 'var(--bg-elevated)' }}>
@@ -120,7 +115,7 @@ export default function Projects({ dark }) {
                   <Github size={16} /> View Code <ExternalLink size={14} />
                 </a>
               </div>
-            </motion.div>
+            </GlassCard>
           ))}
         </div>
       </div>

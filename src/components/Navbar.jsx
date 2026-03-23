@@ -7,7 +7,7 @@ const links = [
   { label: 'Skills', href: '#skills' },
   { label: 'Certifications', href: '#certifications' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Experience', href: '#experience' },
+  // { label: 'Experience', href: '#experience' },
   { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -42,7 +42,7 @@ export default function Navbar({ dark, setDark }) {
         style={{ width: `${progress}%`, background: 'var(--accent)' }}
       />
 
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-full px-12 h-16 flex items-center justify-between">
         <a href="#" className="text-xl font-bold tracking-tight" style={{ color: 'var(--accent)' }}>
           AK<span style={{ color: 'var(--text-muted)' }}>.</span>
         </a>

@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
 import { GraduationCap, Trophy, Code } from 'lucide-react';
+import GlassCard from './GlassCard';
 
 export default function Education({ dark }) {
   return (
-    <section id="education" className="py-24 px-6">
+    <section id="education" className="py-24 px-6" style={{ background: 'var(--bg-elevated)' }}>
       <div className="max-w-4xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -21,17 +22,11 @@ export default function Education({ dark }) {
           className="text-center mb-16"
           style={{ color: 'var(--text-muted)' }}
         >
-          My academic journey and honors
+          My academic journey, honors, and leadership roles
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="p-8 rounded-xl mb-8"
-          style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
-        >
-          <div className="flex items-start gap-4 mb-6">
+        <GlassCard delay={0} className="p-8 mb-8">
+          <div className="flex flex-col sm:flex-row items-start gap-4 mb-6">
             <div className="p-3 rounded-xl" style={{ background: 'var(--accent-soft)' }}>
               <GraduationCap size={24} style={{ color: 'var(--accent)' }} />
             </div>
@@ -44,8 +39,8 @@ export default function Education({ dark }) {
                 Aug 2023 — May 2027 (Expected)
               </p>
             </div>
-            <div className="text-right">
-              <div className="text-2xl font-bold" style={{ color: 'var(--accent)' }}>9.43</div>
+            <div className="text-right w-full sm:w-auto mt-2 sm:mt-0">
+              <div className="text-2xl font-bold" style={{ color: 'var(--accent)' }}>9.28</div>
               <div className="text-xs" style={{ color: 'var(--text-muted)' }}>CGPA / 10.0</div>
             </div>
           </div>
@@ -58,7 +53,7 @@ export default function Education({ dark }) {
               </span>
             ))}
           </div>
-        </motion.div>
+        </GlassCard>
 
         {/* 12th & 10th */}
         <div className="grid sm:grid-cols-2 gap-6 mb-16">
@@ -78,15 +73,7 @@ export default function Education({ dark }) {
               score: '96.4%',
             },
           ].map((edu, i) => (
-            <motion.div
-              key={edu.level}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="p-6 rounded-xl"
-              style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
-            >
+            <GlassCard key={edu.level} delay={i * 0.1} className="p-6">
               <h3 className="font-bold text-base mb-1">{edu.school}</h3>
               <p className="text-xs mb-3" style={{ color: 'var(--text-muted)' }}>{edu.location}</p>
               <div className="flex justify-between items-end">
@@ -98,7 +85,7 @@ export default function Education({ dark }) {
                   <div className="text-lg font-bold" style={{ color: 'var(--accent)' }}>{edu.score}</div>
                 </div>
               </div>
-            </motion.div>
+            </GlassCard>
           ))}
         </div>
 
@@ -107,33 +94,29 @@ export default function Education({ dark }) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-xl font-bold mb-6"
+          className="text-xl font-bold mt-16 mb-6"
         >
           Achievements
         </motion.h3>
 
         <div className="grid sm:grid-cols-2 gap-4">
           {[
-            { icon: Trophy, title: 'LeetCode Knight Badge', desc: 'Rank 381 among 30,000+ contestants' },
-            { icon: Code, title: 'HackerRank 5-Star', desc: 'In C++ and Problem Solving' },
+            { icon: Trophy, title: 'LeetCode Knight Badge', desc: 'Ranked 381 among 30,000+ contestants globally (Top 1.3%).' },
+            { icon: Code, title: 'HackerRank 5-Star', desc: 'Expert rating in C++ and Problem Solving data structures.' },
+            { icon: GraduationCap, title: 'Student Coordinator', desc: 'Leading student feedback initiatives impacting 25,000+ CSE students and driving curriculum improvements at LPU SAAC.' },
           ].map((a, i) => (
-            <motion.div
-              key={a.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="p-5 rounded-xl flex items-start gap-4 transition-all hover:-translate-y-1"
-              style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
-            >
-              <div className="p-2 rounded-lg" style={{ background: 'var(--accent-2-soft)' }}>
-                <a.icon size={20} style={{ color: 'var(--accent-2)' }} />
+            <GlassCard key={a.title} delay={i * 0.1} className="overflow-hidden">
+              <div className="h-2 w-full" style={{ background: 'var(--accent)' }} />
+              <div className="p-5">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="p-2 rounded-lg" style={{ background: 'var(--accent-soft)' }}>
+                    <a.icon size={18} style={{ color: 'var(--accent)' }} />
+                  </div>
+                  <h4 className="font-bold text-base">{a.title}</h4>
+                </div>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>{a.desc}</p>
               </div>
-              <div>
-                <h4 className="font-semibold">{a.title}</h4>
-                <p className="text-sm" style={{ color: 'var(--text-muted)' }}>{a.desc}</p>
-              </div>
-            </motion.div>
+            </GlassCard>
           ))}
         </div>
       </div>

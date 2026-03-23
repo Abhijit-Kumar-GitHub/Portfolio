@@ -78,7 +78,7 @@ export default function Hero() {
               style={{ background: 'var(--accent)' }}>
               View Projects
             </a>
-            <a href="/assets/certificates/CV_Abhijit_ML.pdf" target="_blank"
+            <a href="/assets/certificates/class_cv_abhi_2_updatted.pdf" target="_blank"
               className="px-6 py-3 rounded-lg font-semibold text-sm flex items-center gap-2 transition-all hover:-translate-y-0.5"
               style={{ border: '1px solid var(--border)', color: 'var(--text-secondary)' }}>
               <FileText size={16} /> Resume
