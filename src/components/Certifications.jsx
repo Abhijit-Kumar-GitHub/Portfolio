@@ -31,10 +31,10 @@ const certifications = [
 
 const trainings = [
   {
-    title: 'Data Science Internship',
+    title: 'Data Science Training',
     issuer: 'Techvanto Academy, New Delhi',
     date: 'Jun 2025 — Jul 2025',
-    detail: '6-Week Live Internship with Grade A',
+    detail: '6-Week Live Training with Grade A',
     file: '/assets/certificates/Abhijit-Certificate.pdf',
   },
 ];
